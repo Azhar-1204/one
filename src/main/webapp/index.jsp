@@ -3,1117 +3,1311 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>NexusShop — Modern E‑Commerce</title>
+
+    <title>Kohinoor Lorry Transport & Parts</title>
 
     <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
 
     <style>
-        /* ========== ROOT VARIABLES ========== */
+        /* ============================================================
+           ROOT
+        ============================================================ */
         :root {
-            --bg: #fafaf8;
-            --bg-card: #ffffff;
-            --primary: #1a1a2e;
-            --primary-light: #2d2d44;
-            --accent: #e07a5f;
-            --accent-light: #f4d0c4;
-            --accent-dark: #c05a3e;
-            --muted: #6b6b7a;
-            --muted-light: #a0a0b0;
-            --surface: #f0efed;
-            --success: #2a9d8f;
-            --warning: #e9c46a;
-            --radius: 16px;
-            --radius-sm: 10px;
-            --shadow: 0 4px 24px rgba(26, 26, 46, 0.06);
-            --shadow-hover: 0 12px 48px rgba(26, 26, 46, 0.10);
-            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --bg: #f4f6f8;
+            --white: #ffffff;
+            --dark: #101820;
+            --dark-2: #18232d;
+            --yellow: #f5b700;
+            --yellow-dark: #d99e00;
+            --red: #d62828;
+            --red-dark: #b71c1c;
+            --blue: #1769aa;
+            --text: #202830;
+            --muted: #68737d;
+            --border: #e2e6ea;
+            --green: #188a55;
+
+            --radius: 14px;
+            --radius-sm: 9px;
+
+            --shadow: 0 5px 24px rgba(16, 24, 32, 0.07);
+            --shadow-hover: 0 14px 38px rgba(16, 24, 32, 0.13);
+
+            --transition: 0.25s ease;
             --container: 1240px;
         }
 
-        /* ========== RESET & BASE ========== */
+        /* ============================================================
+           RESET
+        ============================================================ */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
+
         html {
             scroll-behavior: smooth;
         }
+
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Inter', sans-serif;
             background: var(--bg);
-            color: var(--primary);
+            color: var(--text);
             line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
+
         a {
-            color: inherit;
             text-decoration: none;
+            color: inherit;
         }
+
         img {
             display: block;
             max-width: 100%;
         }
-        button {
-            cursor: pointer;
-            font-family: inherit;
-            border: none;
-            background: none;
-            color: inherit;
-        }
+
+        button,
         input {
             font-family: inherit;
+        }
+
+        button {
+            border: 0;
+            cursor: pointer;
         }
 
         .container {
             width: 100%;
             max-width: var(--container);
-            margin: 0 auto;
+            margin: auto;
             padding: 0 24px;
         }
 
-        /* ========== UTILITIES ========== */
         .muted {
             color: var(--muted);
         }
-        .text-center {
-            text-align: center;
-        }
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            border: 0;
-        }
 
-        /* ========== BUTTONS ========== */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 12px 28px;
-            border-radius: 999px;
-            font-weight: 600;
-            font-size: 15px;
-            transition: var(--transition);
-            border: 2px solid transparent;
-        }
-        .btn-primary {
-            background: var(--accent);
+        /* ============================================================
+           TOP BAR
+        ============================================================ */
+        .top-bar {
+            background: var(--dark);
             color: #fff;
-            border-color: var(--accent);
-        }
-        .btn-primary:hover {
-            background: var(--accent-dark);
-            border-color: var(--accent-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(224, 122, 95, 0.30);
-        }
-        .btn-secondary {
-            background: var(--primary);
-            color: #fff;
-            border-color: var(--primary);
-        }
-        .btn-secondary:hover {
-            background: var(--primary-light);
-            border-color: var(--primary-light);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(26, 26, 46, 0.20);
-        }
-        .btn-outline {
-            background: transparent;
-            color: var(--primary);
-            border-color: rgba(26, 26, 46, 0.15);
-        }
-        .btn-outline:hover {
-            background: var(--primary);
-            color: #fff;
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
-        .btn-ghost {
-            background: rgba(255, 255, 255, 0.15);
-            color: #fff;
-            border-color: rgba(255, 255, 255, 0.25);
-        }
-        .btn-ghost:hover {
-            background: rgba(255, 255, 255, 0.25);
-            border-color: rgba(255, 255, 255, 0.4);
-            transform: translateY(-2px);
-        }
-        .btn-sm {
-            padding: 8px 18px;
             font-size: 13px;
         }
 
-        /* ========== HEADER ========== */
+        .top-bar-inner {
+            min-height: 38px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .top-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .top-info span {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            opacity: 0.9;
+        }
+
+        .top-info i {
+            color: var(--yellow);
+        }
+
+        /* ============================================================
+           HEADER
+        ============================================================ */
         header {
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(26, 26, 46, 0.04);
+            background: #fff;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
         }
+
         .header-inner {
+            min-height: 78px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 16px;
-            padding: 12px 0;
-            min-height: 68px;
+            gap: 22px;
         }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-weight: 800;
-            font-size: 22px;
-            letter-spacing: -0.5px;
-            color: var(--primary);
+            gap: 11px;
             flex-shrink: 0;
         }
-        .brand .accent {
-            color: var(--accent);
-        }
-        .brand i {
-            font-size: 26px;
-            color: var(--accent);
+
+        .brand-icon {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            background: var(--yellow);
+            color: var(--dark);
+            border-radius: 10px;
+            font-size: 24px;
         }
 
-        nav.main-nav ul {
-            display: flex;
-            gap: 4px;
-            list-style: none;
-            align-items: center;
+        .brand-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: 25px;
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 1;
+            letter-spacing: 0.3px;
         }
-        nav.main-nav li a {
+
+        .brand-text span {
+            display: block;
+            color: var(--red);
+            font-size: 12px;
+            letter-spacing: 1.2px;
+            margin-top: 5px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        nav ul {
             display: flex;
             align-items: center;
-            gap: 6px;
-            padding: 8px 16px;
-            border-radius: var(--radius-sm);
-            font-weight: 500;
+            list-style: none;
+            gap: 3px;
+        }
+
+        nav a {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 9px 13px;
+            border-radius: 7px;
             font-size: 14px;
+            font-weight: 600;
             color: var(--muted);
             transition: var(--transition);
         }
-        nav.main-nav li a:hover,
-        nav.main-nav li a.active {
-            background: var(--surface);
-            color: var(--primary);
+
+        nav a:hover,
+        nav a.active {
+            background: #fff7d8;
+            color: var(--dark);
         }
-        nav.main-nav li a i {
-            font-size: 14px;
+
+        nav a i {
+            color: var(--red);
         }
 
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 6px;
-            flex-shrink: 0;
+            gap: 7px;
         }
-        .header-actions .icon-btn {
-            width: 42px;
-            height: 42px;
+
+        .header-btn {
+            width: 40px;
+            height: 40px;
             display: grid;
             place-items: center;
-            border-radius: 50%;
-            font-size: 18px;
-            color: var(--muted);
+            border-radius: 8px;
+            color: var(--dark);
+            background: #f2f4f6;
             transition: var(--transition);
-            position: relative;
         }
-        .header-actions .icon-btn:hover {
-            background: var(--surface);
-            color: var(--primary);
+
+        .header-btn:hover {
+            background: var(--yellow);
+            transform: translateY(-2px);
         }
 
         .cart-wrap {
             position: relative;
         }
+
         .cart-count {
             position: absolute;
-            top: -2px;
-            right: -2px;
-            background: var(--accent);
-            color: #fff;
-            font-size: 11px;
-            font-weight: 700;
-            width: 20px;
-            height: 20px;
+            top: -5px;
+            right: -5px;
+            width: 19px;
+            height: 19px;
             border-radius: 50%;
+            background: var(--red);
+            color: #fff;
             display: grid;
             place-items: center;
+            font-size: 10px;
+            font-weight: 800;
             border: 2px solid #fff;
-        }
-
-        .search-wrap {
-            display: flex;
-            align-items: center;
-            background: var(--surface);
-            border-radius: 999px;
-            padding: 0 16px 0 18px;
-            transition: var(--transition);
-            border: 2px solid transparent;
-            min-width: 220px;
-        }
-        .search-wrap:focus-within {
-            border-color: var(--accent);
-            background: #fff;
-            box-shadow: 0 0 0 4px rgba(224, 122, 95, 0.10);
-        }
-        .search-wrap input {
-            border: 0;
-            background: transparent;
-            outline: none;
-            width: 100%;
-            padding: 10px 0;
-            font-size: 14px;
-            color: var(--primary);
-        }
-        .search-wrap input::placeholder {
-            color: var(--muted-light);
-        }
-        .search-wrap button {
-            padding: 8px 0 8px 10px;
-            color: var(--muted);
-            font-size: 15px;
-            transition: var(--transition);
-        }
-        .search-wrap button:hover {
-            color: var(--accent);
         }
 
         .mobile-toggle {
             display: none;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            font-size: 20px;
-            background: var(--surface);
-            color: var(--primary);
-            transition: var(--transition);
-        }
-        .mobile-toggle:hover {
-            background: var(--accent-light);
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: var(--dark);
+            color: #fff;
+            font-size: 18px;
         }
 
         #mobileMenu {
             display: none;
             background: #fff;
-            border-top: 1px solid rgba(26, 26, 46, 0.04);
-            padding: 12px 0 20px;
+            border-top: 1px solid var(--border);
+            padding: 10px 0 18px;
         }
+
         #mobileMenu ul {
+            display: flex;
+            flex-direction: column;
             list-style: none;
-            display: flex;
-            flex-direction: column;
             gap: 4px;
         }
-        #mobileMenu ul li a {
+
+        #mobileMenu a {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 12px 16px;
-            border-radius: var(--radius-sm);
-            font-weight: 500;
-            color: var(--primary);
-            transition: var(--transition);
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
         }
-        #mobileMenu ul li a:hover {
-            background: var(--surface);
+
+        #mobileMenu a:hover {
+            background: #fff7d8;
         }
-        #mobileMenu ul li a i {
+
+        #mobileMenu i {
+            color: var(--red);
             width: 22px;
-            color: var(--muted);
         }
 
-        /* ========== HERO ========== */
+        /* ============================================================
+           HERO
+        ============================================================ */
         .hero {
+            min-height: 520px;
             position: relative;
             display: flex;
             align-items: center;
-            min-height: 480px;
-            padding: 60px 0;
-            border-radius: var(--radius);
             overflow: hidden;
-            margin: 20px 24px 0;
-            background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+            background:
+                linear-gradient(90deg, rgba(10,16,21,0.96) 0%, rgba(10,16,21,0.82) 47%, rgba(10,16,21,0.30) 100%),
+                url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d8?auto=format&fit=crop&w=1800&q=85')
+                center/cover no-repeat;
         }
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
-            opacity: 0.35;
-            z-index: 0;
-        }
-        .hero .container {
+
+        .hero-content {
             position: relative;
-            z-index: 1;
-        }
-        .hero .badge {
-            display: inline-block;
-            background: rgba(224, 122, 95, 0.20);
-            color: var(--accent);
-            padding: 4px 16px;
-            border-radius: 999px;
-            font-weight: 600;
-            font-size: 13px;
-            letter-spacing: 0.3px;
-            margin-bottom: 16px;
-        }
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 48px;
-            font-weight: 700;
+            z-index: 2;
+            max-width: 690px;
             color: #fff;
-            line-height: 1.15;
-            max-width: 640px;
-            margin-bottom: 16px;
-        }
-        .hero p {
-            color: rgba(255, 255, 255, 0.80);
-            font-size: 17px;
-            max-width: 520px;
-            margin-bottom: 28px;
-            line-height: 1.6;
-        }
-        .hero .actions {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
+            padding: 70px 0;
         }
 
-        /* ========== SECTION ========== */
-        .section {
-            padding: 56px 0;
-        }
-        .section-header {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            gap: 16px;
-            margin-bottom: 32px;
-            flex-wrap: wrap;
-        }
-        .section-header .title-group h2 {
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: -0.3px;
-        }
-        .section-header .title-group p {
-            color: var(--muted);
-            margin-top: 4px;
-            font-size: 15px;
-        }
-        .section-header .view-all {
-            font-weight: 600;
-            color: var(--accent);
-            display: flex;
+        .hero-tag {
+            display: inline-flex;
             align-items: center;
-            gap: 6px;
-            font-size: 14px;
-            transition: var(--transition);
-            white-space: nowrap;
-        }
-        .section-header .view-all:hover {
-            gap: 12px;
-            color: var(--accent-dark);
-        }
-
-        /* ========== CATEGORIES ========== */
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 16px;
-        }
-        .cat-card {
-            background: var(--bg-card);
-            border-radius: var(--radius);
-            padding: 24px 16px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            cursor: pointer;
-            border: 2px solid transparent;
-        }
-        .cat-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--accent-light);
-        }
-        .cat-card .icon-wrap {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            background: var(--accent-light);
-            display: grid;
-            place-items: center;
-            margin: 0 auto 12px;
-            font-size: 24px;
-            color: var(--accent);
-            transition: var(--transition);
-        }
-        .cat-card:hover .icon-wrap {
-            background: var(--accent);
-            color: #fff;
-        }
-        .cat-card h4 {
-            font-size: 15px;
-            font-weight: 600;
-        }
-        .cat-card .count {
-            font-size: 13px;
-            color: var(--muted);
-            margin-top: 4px;
-        }
-
-        /* ========== PRODUCTS ========== */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-        .product-card {
-            background: var(--bg-card);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            border: 2px solid transparent;
-        }
-        .product-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--accent-light);
-        }
-        .product-card .img-wrap {
-            position: relative;
-            overflow: hidden;
-            background: var(--surface);
-            aspect-ratio: 1 / 1;
-        }
-        .product-card .img-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        .product-card:hover .img-wrap img {
-            transform: scale(1.04);
-        }
-        .product-card .badge {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            background: var(--accent);
-            color: #fff;
-            padding: 4px 12px;
-            border-radius: 999px;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.3px;
-        }
-        .product-card .badge.sale {
-            background: var(--warning);
-            color: var(--primary);
-        }
-        .product-card .wish-btn {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.90);
-            display: grid;
-            place-items: center;
-            font-size: 16px;
-            color: var(--muted);
-            transition: var(--transition);
-            backdrop-filter: blur(4px);
-        }
-        .product-card .wish-btn:hover {
-            background: #fff;
-            color: var(--accent);
-            transform: scale(1.10);
-        }
-        .product-card .body {
-            padding: 16px 18px 14px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-        .product-card .body .category-tag {
-            font-size: 12px;
-            color: var(--muted-light);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 600;
-        }
-        .product-card .body h5 {
-            font-size: 15px;
-            font-weight: 600;
-            line-height: 1.3;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        .product-card .body .price-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 4px;
-        }
-        .product-card .body .price {
-            font-weight: 700;
-            font-size: 18px;
-            color: var(--primary);
-        }
-        .product-card .body .old-price {
-            color: var(--muted-light);
-            text-decoration: line-through;
-            font-size: 14px;
-        }
-        .product-card .body .rating {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 13px;
-            color: #f5a623;
-        }
-        .product-card .body .rating span {
-            color: var(--muted);
-            font-weight: 400;
-        }
-        .product-card .footer {
-            padding: 0 18px 18px;
-            display: flex;
-            gap: 10px;
-        }
-        .product-card .footer .add-btn {
-            flex: 1;
-            padding: 10px;
-            border-radius: var(--radius-sm);
-            background: var(--primary);
-            color: #fff;
-            font-weight: 600;
-            font-size: 14px;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             gap: 8px;
-        }
-        .product-card .footer .add-btn:hover {
-            background: var(--accent);
-            transform: scale(1.02);
-        }
-        .product-card .footer .add-btn.added {
-            background: var(--success);
-        }
-
-        /* ========== DEAL ========== */
-        .deal-wrap {
-            display: flex;
-            gap: 0;
-            background: var(--bg-card);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-        .deal-wrap .deal-img {
-            flex: 0 0 48%;
-            background: var(--surface);
-            min-height: 300px;
-        }
-        .deal-wrap .deal-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .deal-wrap .deal-content {
-            flex: 1;
-            padding: 40px 44px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .deal-wrap .deal-content .tag {
-            display: inline-block;
-            background: var(--warning);
-            color: var(--primary);
-            padding: 4px 14px;
-            border-radius: 999px;
+            background: var(--yellow);
+            color: var(--dark);
+            padding: 7px 15px;
+            border-radius: 4px;
             font-size: 12px;
-            font-weight: 700;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            align-self: flex-start;
-            margin-bottom: 12px;
-        }
-        .deal-wrap .deal-content h3 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-        .deal-wrap .deal-content .desc {
-            color: var(--muted);
+            letter-spacing: 0.8px;
             margin-bottom: 18px;
         }
-        .deal-wrap .deal-content .price-big {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--primary);
-        }
-        .deal-wrap .deal-content .price-big .old {
-            font-size: 20px;
-            font-weight: 400;
-            color: var(--muted-light);
-            text-decoration: line-through;
-            margin-left: 10px;
-        }
-        .deal-wrap .deal-content .stock {
-            font-size: 14px;
-            color: var(--muted);
-            margin: 4px 0 16px;
-        }
-        .deal-wrap .deal-content .stock strong {
-            color: var(--accent);
+
+        .hero h1 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-size: 57px;
+            line-height: 1.03;
+            letter-spacing: 0.4px;
+            margin-bottom: 18px;
         }
 
-        .timer-grid {
+        .hero h1 span {
+            color: var(--yellow);
+        }
+
+        .hero p {
+            max-width: 600px;
+            color: rgba(255,255,255,0.82);
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+
+        .hero-buttons {
             display: flex;
             gap: 12px;
-            margin: 16px 0 20px;
-        }
-        .timer-box {
-            background: var(--primary);
-            color: #fff;
-            padding: 10px 16px;
-            border-radius: var(--radius-sm);
-            min-width: 68px;
-            text-align: center;
-        }
-        .timer-box .num {
-            font-size: 26px;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-        .timer-box .label {
-            font-size: 11px;
-            opacity: 0.70;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            flex-wrap: wrap;
         }
 
-        /* ========== TESTIMONIALS ========== */
-        .testimonials-scroll {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            padding: 8px 4px 16px;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-        }
-        .testimonials-scroll::-webkit-scrollbar {
-            height: 4px;
-        }
-        .testimonials-scroll::-webkit-scrollbar-thumb {
-            background: var(--accent-light);
-            border-radius: 999px;
-        }
-        .testimonial-card {
-            flex: 0 0 340px;
-            background: var(--bg-card);
-            border-radius: var(--radius);
-            padding: 24px 26px;
-            box-shadow: var(--shadow);
-            scroll-snap-align: start;
+        .btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 24px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 14px;
             transition: var(--transition);
         }
-        .testimonial-card:hover {
-            box-shadow: var(--shadow-hover);
-        }
-        .testimonial-card .stars {
-            color: #f5a623;
-            font-size: 16px;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-        .testimonial-card blockquote {
-            font-size: 15px;
-            line-height: 1.6;
-            color: var(--primary);
-            margin-bottom: 14px;
-            font-style: italic;
-        }
-        .testimonial-card .author {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .testimonial-card .author .avatar {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            object-fit: cover;
-            background: var(--surface);
-        }
-        .testimonial-card .author .name {
-            font-weight: 600;
-            font-size: 14px;
-        }
-        .testimonial-card .author .role {
-            font-size: 13px;
-            color: var(--muted);
+
+        .btn-yellow {
+            background: var(--yellow);
+            color: var(--dark);
         }
 
-        /* ========== NEWSLETTER ========== */
-        .newsletter-wrap {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+        .btn-yellow:hover {
+            background: #ffd044;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(245,183,0,0.3);
+        }
+
+        .btn-red {
+            background: var(--red);
+            color: #fff;
+        }
+
+        .btn-red:hover {
+            background: var(--red-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            color: var(--dark);
+            background: #fff;
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            background: var(--yellow);
+            border-color: var(--yellow);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 620px;
+            margin-top: 38px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 24px;
+        }
+
+        .hero-stat {
+            padding-right: 20px;
+            border-right: 1px solid rgba(255,255,255,0.18);
+        }
+
+        .hero-stat:last-child {
+            border-right: 0;
+            padding-left: 20px;
+        }
+
+        .hero-stat:nth-child(2) {
+            padding-left: 20px;
+        }
+
+        .hero-stat strong {
+            display: block;
+            font-family: 'Oswald', sans-serif;
+            font-size: 27px;
+            color: var(--yellow);
+        }
+
+        .hero-stat span {
+            font-size: 12px;
+            color: rgba(255,255,255,0.65);
+        }
+
+        /* ============================================================
+           SECTION
+        ============================================================ */
+        .section {
+            padding: 65px 0;
+        }
+
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-size: 32px;
+            color: var(--dark);
+            letter-spacing: 0.3px;
+        }
+
+        .section-subtitle {
+            color: var(--muted);
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+        .section-line {
+            width: 55px;
+            height: 4px;
+            background: var(--yellow);
+            margin-top: 12px;
+        }
+
+        .view-all {
+            color: var(--red);
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .view-all:hover {
+            color: var(--dark);
+        }
+
+        /* ============================================================
+           QUICK SERVICES
+        ============================================================ */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 17px;
+        }
+
+        .service-card {
+            background: #fff;
+            border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 48px 56px;
+            padding: 25px 20px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            background: #fff7d8;
+            border-radius: 50%;
+            right: -25px;
+            bottom: -25px;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--yellow);
+        }
+
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            display: grid;
+            place-items: center;
+            border-radius: 9px;
+            background: var(--dark);
+            color: var(--yellow);
+            font-size: 22px;
+            margin-bottom: 16px;
+        }
+
+        .service-card h3 {
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        .service-card p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+           PART CATEGORIES
+        ============================================================ */
+        .parts-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 14px;
+        }
+
+        .part-category {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 23px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .part-category:hover {
+            border-color: var(--yellow);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .part-icon {
+            width: 58px;
+            height: 58px;
+            margin: auto auto 13px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: #fff7d8;
+            color: var(--dark);
+            font-size: 24px;
+        }
+
+        .part-category:hover .part-icon {
+            background: var(--yellow);
+        }
+
+        .part-category h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .part-category span {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        /* ============================================================
+           PRODUCTS
+        ============================================================ */
+        .parts-products {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 19px;
+        }
+
+        .product-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: #e7c94d;
+        }
+
+        .product-image {
+            position: relative;
+            height: 210px;
+            overflow: hidden;
+            background: #e8ebee;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-label {
+            position: absolute;
+            top: 11px;
+            left: 11px;
+            background: var(--red);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .product-label.yellow {
+            background: var(--yellow);
+            color: var(--dark);
+        }
+
+        .product-body {
+            padding: 17px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .product-category {
+            font-size: 10px;
+            font-weight: 800;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+            margin-bottom: 5px;
+        }
+
+        .product-title {
+            font-size: 15px;
+            line-height: 1.35;
+            margin-bottom: 9px;
+        }
+
+        .product-rating {
+            color: #e8a900;
+            font-size: 12px;
+            margin-bottom: 11px;
+        }
+
+        .product-rating span {
+            color: var(--muted);
+            margin-left: 5px;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: auto;
+            margin-bottom: 14px;
+        }
+
+        .price {
+            font-family: 'Oswald', sans-serif;
+            font-size: 23px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .old-price {
+            color: #9aa2a9;
+            text-decoration: line-through;
+            font-size: 12px;
+        }
+
+        .add-part {
+            width: 100%;
+            padding: 10px;
+            background: var(--dark);
+            color: #fff;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .add-part:hover {
+            background: var(--red);
+        }
+
+        .add-part.added {
+            background: var(--green);
+        }
+
+        /* ============================================================
+           TRANSPORT BANNER
+        ============================================================ */
+        .transport-banner {
+            background:
+                linear-gradient(100deg, rgba(16,24,32,0.97), rgba(16,24,32,0.88)),
+                url('https://images.unsplash.com/photo-1502744688674-c619d1586c9e?auto=format&fit=crop&w=1600&q=80')
+                center/cover;
+            border-radius: var(--radius);
+            padding: 48px;
             color: #fff;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 32px;
+            gap: 35px;
+        }
+
+        .transport-content {
+            max-width: 690px;
+        }
+
+        .transport-tag {
+            display: inline-block;
+            color: var(--yellow);
+            text-transform: uppercase;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 9px;
+        }
+
+        .transport-banner h2 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-size: 37px;
+            margin-bottom: 9px;
+        }
+
+        .transport-banner p {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+
+        .transport-features {
+            display: flex;
+            gap: 22px;
             flex-wrap: wrap;
+            margin-top: 20px;
         }
-        .newsletter-wrap .text h3 {
-            font-size: 26px;
+
+        .transport-feature {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .transport-feature i {
+            color: var(--yellow);
+        }
+
+        .truck-icon {
+            font-size: 110px;
+            color: var(--yellow);
+            opacity: 0.9;
+        }
+
+        /* ============================================================
+           DEAL
+        ============================================================ */
+        .deal {
+            display: grid;
+            grid-template-columns: 42% 58%;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .deal-image {
+            min-height: 330px;
+        }
+
+        .deal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .deal-content {
+            padding: 40px;
+        }
+
+        .deal-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background: var(--red);
+            color: #fff;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-size: 10px;
+            font-weight: 800;
+            margin-bottom: 13px;
+        }
+
+        .deal-content h3 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-size: 31px;
+            margin-bottom: 8px;
+        }
+
+        .deal-content p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 14px;
+        }
+
+        .deal-price {
+            font-family: 'Oswald', sans-serif;
+            font-size: 35px;
+            color: var(--red);
             font-weight: 700;
-            margin-bottom: 4px;
         }
-        .newsletter-wrap .text p {
-            opacity: 0.75;
-            font-size: 15px;
+
+        .deal-old {
+            color: #9aa2a9;
+            text-decoration: line-through;
+            font-size: 17px;
+            margin-left: 8px;
         }
-        .newsletter-wrap form {
+
+        .stock {
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .stock strong {
+            color: var(--red);
+        }
+
+        .timer {
+            display: flex;
+            gap: 9px;
+            margin: 18px 0 21px;
+        }
+
+        .timer-box {
+            background: var(--dark);
+            color: #fff;
+            min-width: 62px;
+            padding: 8px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .timer-box strong {
+            display: block;
+            color: var(--yellow);
+            font-family: 'Oswald', sans-serif;
+            font-size: 23px;
+        }
+
+        .timer-box small {
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+            font-size: 9px;
+        }
+
+        /* ============================================================
+           WHY KOHINOOR
+        ============================================================ */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .why-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 27px;
+        }
+
+        .why-number {
+            font-family: 'Oswald', sans-serif;
+            color: var(--yellow-dark);
+            font-size: 28px;
+            margin-bottom: 7px;
+        }
+
+        .why-card h3 {
+            font-size: 16px;
+            margin-bottom: 7px;
+        }
+
+        .why-card p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+           TESTIMONIALS
+        ============================================================ */
+        .reviews {
+            display: flex;
+            gap: 18px;
+            overflow-x: auto;
+            padding: 5px 3px 18px;
+        }
+
+        .review {
+            flex: 0 0 330px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 23px;
+        }
+
+        .review-stars {
+            color: #e5a900;
+            margin-bottom: 10px;
+        }
+
+        .review blockquote {
+            font-size: 14px;
+            line-height: 1.65;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .review-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #ddd;
+        }
+
+        .review-name {
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .review-role {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        /* ============================================================
+           ENQUIRY
+        ============================================================ */
+        .enquiry {
+            background: var(--yellow);
+            border-radius: var(--radius);
+            padding: 40px 45px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .enquiry h2 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-size: 31px;
+            color: var(--dark);
+        }
+
+        .enquiry p {
+            color: rgba(16,24,32,0.7);
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .enquiry-actions {
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
-            flex: 1;
-            max-width: 480px;
-        }
-        .newsletter-wrap form input {
-            flex: 1;
-            min-width: 200px;
-            padding: 14px 20px;
-            border-radius: 999px;
-            border: 0;
-            font-size: 15px;
-            background: rgba(255, 255, 255, 0.12);
-            color: #fff;
-            transition: var(--transition);
-            outline: 2px solid transparent;
-        }
-        .newsletter-wrap form input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-        .newsletter-wrap form input:focus {
-            outline-color: var(--accent);
-            background: rgba(255, 255, 255, 0.18);
-        }
-        .newsletter-wrap form .btn {
-            background: var(--accent);
-            color: #fff;
-            border-color: var(--accent);
-            padding: 14px 32px;
-        }
-        .newsletter-wrap form .btn:hover {
-            background: var(--accent-dark);
-            border-color: var(--accent-dark);
-        }
-        #newsletterMsg {
-            margin-top: 12px;
-            font-size: 14px;
-            opacity: 0.9;
-            width: 100%;
         }
 
-        /* ========== FOOTER ========== */
+        /* ============================================================
+           FOOTER
+        ============================================================ */
         footer {
-            margin-top: 16px;
-            padding: 44px 0 28px;
-            border-top: 1px solid rgba(26, 26, 46, 0.04);
+            background: var(--dark);
+            color: #fff;
+            padding: 50px 0 25px;
         }
+
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 40px;
-            margin-bottom: 32px;
+            padding-bottom: 35px;
         }
-        .footer-grid .brand-col .brand {
-            font-size: 20px;
-            margin-bottom: 8px;
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.55);
+            font-size: 13px;
+            max-width: 310px;
+            margin-top: 13px;
+            line-height: 1.7;
         }
-        .footer-grid .brand-col p {
-            color: var(--muted);
-            font-size: 14px;
-            max-width: 300px;
-            line-height: 1.6;
+
+        .footer-title {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+            margin-bottom: 13px;
+            color: var(--yellow);
         }
-        .footer-grid .brand-col .socials {
-            display: flex;
-            gap: 10px;
-            margin-top: 14px;
-        }
-        .footer-grid .brand-col .socials a {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--surface);
-            display: grid;
-            place-items: center;
-            color: var(--muted);
-            transition: var(--transition);
-            font-size: 16px;
-        }
-        .footer-grid .brand-col .socials a:hover {
-            background: var(--accent);
-            color: #fff;
-        }
-        .footer-grid .col h5 {
-            font-weight: 700;
-            font-size: 14px;
-            margin-bottom: 12px;
-            color: var(--primary);
-        }
-        .footer-grid .col ul {
+
+        .footer-list {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 8px;
         }
-        .footer-grid .col ul li a {
-            color: var(--muted);
-            font-size: 14px;
-            transition: var(--transition);
-        }
-        .footer-grid .col ul li a:hover {
-            color: var(--accent);
-        }
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(26, 26, 46, 0.04);
-            color: var(--muted-light);
+
+        .footer-list a {
+            color: rgba(255,255,255,0.58);
             font-size: 13px;
         }
 
-        /* ========== RESPONSIVE ========== */
-        @media (max-width: 1200px) {
-            .products-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .categories-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 28px;
-            }
+        .footer-list a:hover {
+            color: var(--yellow);
         }
 
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 36px;
-            }
-            .hero {
-                min-height: 380px;
-                margin: 16px 16px 0;
-                padding: 40px 0;
-            }
-            .deal-wrap {
-                flex-direction: column;
-            }
-            .deal-wrap .deal-img {
-                flex: 0 0 240px;
-            }
-            .deal-wrap .deal-content {
-                padding: 28px 30px;
-            }
-            .newsletter-wrap {
-                padding: 32px 28px;
-                flex-direction: column;
-                text-align: center;
-            }
-            .newsletter-wrap form {
-                max-width: 100%;
-            }
-            .search-wrap {
-                min-width: 150px;
-            }
+        .socials {
+            display: flex;
+            gap: 8px;
+            margin-top: 17px;
         }
 
-        @media (max-width: 768px) {
-            nav.main-nav {
+        .socials a {
+            width: 36px;
+            height: 36px;
+            display: grid;
+            place-items: center;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+        }
+
+        .socials a:hover {
+            background: var(--red);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 19px;
+            text-align: center;
+            color: rgba(255,255,255,0.4);
+            font-size: 11px;
+        }
+
+        /* ============================================================
+           RESPONSIVE
+        ============================================================ */
+        @media(max-width:1100px) {
+            .parts-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .parts-products {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            nav {
                 display: none;
             }
+
             .mobile-toggle {
                 display: grid;
                 place-items: center;
             }
-            .products-grid {
+        }
+
+        @media(max-width:900px) {
+            .service-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 14px;
             }
-            .categories-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
+
             .hero h1 {
-                font-size: 28px;
+                font-size: 45px;
             }
-            .hero p {
-                font-size: 15px;
-            }
-            .section-header h2 {
-                font-size: 22px;
-            }
-            .deal-wrap .deal-content h3 {
-                font-size: 22px;
-            }
-            .deal-wrap .deal-content .price-big {
-                font-size: 26px;
-            }
-            .timer-box {
-                min-width: 56px;
-                padding: 8px 12px;
-            }
-            .timer-box .num {
-                font-size: 20px;
-            }
-            .footer-grid {
+
+            .deal {
                 grid-template-columns: 1fr;
-                gap: 20px;
             }
-            .header-inner {
-                flex-wrap: nowrap;
+
+            .deal-image {
+                min-height: 240px;
             }
-            .brand {
-                font-size: 18px;
+
+            .transport-banner {
+                padding: 35px;
             }
-            .brand i {
-                font-size: 20px;
+
+            .truck-icon {
+                font-size: 80px;
             }
-            .search-wrap {
-                min-width: 120px;
-                padding: 0 10px 0 14px;
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
             }
-            .search-wrap input {
-                font-size: 13px;
-                padding: 8px 0;
-            }
-            .header-actions .icon-btn {
-                width: 36px;
-                height: 36px;
-                font-size: 15px;
-            }
-            .cart-count {
-                width: 18px;
-                height: 18px;
-                font-size: 10px;
-            }
-            .testimonial-card {
-                flex: 0 0 280px;
-            }
-            .hero .actions .btn {
-                padding: 10px 20px;
-                font-size: 14px;
-            }
-            .section {
-                padding: 36px 0;
+
+            .why-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
 
-        @media (max-width: 480px) {
-            .products-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
-            .categories-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
-            .hero {
-                margin: 10px 10px 0;
-                min-height: 300px;
-                padding: 28px 0;
-                border-radius: var(--radius-sm);
-            }
-            .hero h1 {
-                font-size: 24px;
-            }
+        @media(max-width:650px) {
             .container {
-                padding: 0 14px;
+                padding: 0 15px;
             }
-            .deal-wrap .deal-content {
-                padding: 20px 18px;
+
+            .top-info {
+                justify-content: center;
+                padding: 7px 0;
             }
-            .deal-wrap .deal-img {
-                flex: 0 0 180px;
+
+            .top-info span:nth-child(2) {
+                display: none;
             }
-            .newsletter-wrap {
-                padding: 24px 18px;
+
+            .header-inner {
+                min-height: 67px;
             }
-            .newsletter-wrap .text h3 {
+
+            .brand-text {
                 font-size: 20px;
             }
-            .product-card .body {
-                padding: 12px 12px 8px;
+
+            .brand-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
             }
-            .product-card .body h5 {
-                font-size: 13px;
+
+            .header-btn {
+                width: 35px;
+                height: 35px;
             }
-            .product-card .body .price {
-                font-size: 15px;
+
+            .hero {
+                min-height: 500px;
             }
-            .product-card .footer {
-                padding: 0 12px 12px;
+
+            .hero-content {
+                padding: 55px 0;
             }
-            .product-card .footer .add-btn {
-                font-size: 12px;
-                padding: 8px;
+
+            .hero h1 {
+                font-size: 38px;
             }
-            .timer-box {
-                min-width: 46px;
-                padding: 6px 8px;
+
+            .hero p {
+                font-size: 14px;
             }
-            .timer-box .num {
-                font-size: 16px;
+
+            .hero-stats {
+                grid-template-columns: 1fr 1fr 1fr;
             }
-            .timer-box .label {
+
+            .hero-stat strong {
+                font-size: 21px;
+            }
+
+            .hero-stat span {
                 font-size: 9px;
             }
-            .cat-card {
-                padding: 16px 10px;
+
+            .section {
+                padding: 45px 0;
             }
-            .cat-card .icon-wrap {
-                width: 44px;
-                height: 44px;
-                font-size: 18px;
+
+            .section-title {
+                font-size: 27px;
             }
-            .cat-card h4 {
+
+            .parts-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .parts-products {
+                grid-template-columns: 1fr 1fr;
+                gap: 11px;
+            }
+
+            .product-image {
+                height: 150px;
+            }
+
+            .product-body {
+                padding: 12px;
+            }
+
+            .product-title {
                 font-size: 13px;
+            }
+
+            .price {
+                font-size: 19px;
+            }
+
+            .transport-banner {
+                padding: 27px 22px;
+            }
+
+            .transport-banner h2 {
+                font-size: 28px;
+            }
+
+            .truck-icon {
+                display: none;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .enquiry {
+                padding: 28px 22px;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .enquiry h2 {
+                font-size: 27px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
+
+        @media(max-width:420px) {
+            .parts-products {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-stats {
+                gap: 5px;
+            }
+
+            .hero-stat {
+                padding-right: 7px;
+            }
+
+            .hero-stat:nth-child(2) {
+                padding-left: 7px;
+            }
+
+            .hero-stat:last-child {
+                padding-left: 7px;
+            }
+
+            .timer-box {
+                min-width: 50px;
             }
         }
     </style>
@@ -1121,588 +1315,1929 @@
 
 <body>
 
-    <!-- ===== HEADER ===== -->
-    <header>
-        <div class="container header-inner">
-            <div style="display:flex;align-items:center;gap:12px;">
-                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
-                    <i class="fas fa-bars"></i>
+<!-- ============================================================
+     TOP BAR
+============================================================ -->
+<div class="top-bar">
+    <div class="container top-bar-inner">
+        <div class="top-info">
+            <span>
+                <i class="fas fa-phone"></i>
+                +91 98765 43210
+            </span>
+
+            <span>
+                <i class="fas fa-envelope"></i>
+                kohinoorlorry@gmail.com
+            </span>
+
+            <span>
+                <i class="fas fa-clock"></i>
+                Mon - Sat: 9:00 AM - 7:00 PM
+            </span>
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================================
+     HEADER
+============================================================ -->
+<header>
+    <div class="container header-inner">
+
+        <div style="display:flex;align-items:center;gap:10px;">
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <a href="#" class="brand">
+                <div class="brand-icon">
+                    <i class="fas fa-truck"></i>
+                </div>
+
+                <div class="brand-text">
+                    Kohinoor
+                    <span>Lorry Transport & Parts</span>
+                </div>
+            </a>
+        </div>
+
+
+        <nav>
+            <ul>
+                <li>
+                    <a href="#" class="active">
+                        <i class="fas fa-home"></i>
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#services">
+                        <i class="fas fa-truck-moving"></i>
+                        Transport
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#parts">
+                        <i class="fas fa-cogs"></i>
+                        Lorry Parts
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#deals">
+                        <i class="fas fa-tags"></i>
+                        Offers
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#reviews">
+                        <i class="fas fa-star"></i>
+                        Reviews
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+
+        <div class="header-actions">
+
+            <button
+                class="header-btn"
+                title="Call us"
+                onclick="callBusiness()">
+                <i class="fas fa-phone"></i>
+            </button>
+
+            <div class="cart-wrap">
+                <button
+                    class="header-btn"
+                    id="cartBtn"
+                    title="Parts Cart">
+                    <i class="fas fa-shopping-cart"></i>
                 </button>
-                <a class="brand" href="#">
-                    <i class="fas fa-store-alt"></i>
-                    <span>Nexus<span class="accent">Shop</span></span>
-                </a>
+
+                <span class="cart-count" id="cartCount">0</span>
             </div>
 
-            <nav class="main-nav" id="mainNav" aria-label="Main navigation">
-                <ul>
-                    <li><a href="#" class="active"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="#categories"><i class="fas fa-th-large"></i> Categories</a></li>
-                    <li><a href="#products"><i class="fas fa-fire"></i> Trending</a></li>
-                    <li><a href="#deals"><i class="fas fa-tag"></i> Deals</a></li>
-                    <li><a href="#testimonials"><i class="fas fa-star"></i> Reviews</a></li>
-                </ul>
-            </nav>
-
-            <div style="display:flex;align-items:center;gap:10px;">
-                <div class="search-wrap" role="search">
-                    <input type="search" id="searchInput" placeholder="Search products..." aria-label="Search" />
-                    <button id="searchBtn" aria-label="Submit search"><i class="fas fa-search"></i></button>
-                </div>
-
-                <div class="header-actions">
-                    <button class="icon-btn" title="Account" aria-label="Account"><i class="far fa-user"></i></button>
-                    <button class="icon-btn" title="Wishlist" aria-label="Wishlist"><i class="far fa-heart"></i></button>
-                    <div class="cart-wrap">
-                        <button class="icon-btn" id="cartBtn" title="Cart" aria-label="Cart">
-                            <i class="fas fa-shopping-bag"></i>
-                        </button>
-                        <span class="cart-count" id="cartCount">0</span>
-                    </div>
-                </div>
-            </div>
         </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobileMenu">
-            <div class="container">
-                <ul>
-                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="#categories"><i class="fas fa-th-large"></i> Categories</a></li>
-                    <li><a href="#products"><i class="fas fa-fire"></i> Trending</a></li>
-                    <li><a href="#deals"><i class="fas fa-tag"></i> Deals</a></li>
-                    <li><a href="#testimonials"><i class="fas fa-star"></i> Reviews</a></li>
-                    <li><a href="#"><i class="far fa-user"></i> Account</a></li>
-                    <li><a href="#"><i class="far fa-heart"></i> Wishlist</a></li>
-                </ul>
-            </div>
-        </div>
-    </header>
+    </div>
 
-    <!-- ===== MAIN ===== -->
-    <main>
 
-        <!-- HERO -->
-        <section class="hero" aria-label="Hero banner">
-            <div class="container">
-                <div class="badge"><i class="fas fa-sparkles"></i> New Collection 2026</div>
-                <h1>Discover Premium <br>Essentials</h1>
-                <p>Curated fashion, tech & accessories with free shipping on your first order. Limited-time deals await.</p>
-                <div class="actions">
-                    <button class="btn btn-primary" id="shopNow"><i class="fas fa-arrow-right"></i> Shop Now</button>
-                    <button class="btn btn-ghost" id="exploreDeals"><i class="fas fa-clock"></i> Explore Deals</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- CATEGORIES -->
-        <section class="section" id="categories" aria-labelledby="cat-title">
-            <div class="container">
-                <div class="section-header">
-                    <div class="title-group">
-                        <h2 id="cat-title">Browse Categories</h2>
-                        <p>Find exactly what you're looking for</p>
-                    </div>
-                    <a href="#" class="view-all">All Categories <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="categories-grid" id="categoriesGrid" aria-live="polite"></div>
-            </div>
-        </section>
-
-        <!-- PRODUCTS -->
-        <section class="section" id="products" aria-labelledby="prod-title">
-            <div class="container">
-                <div class="section-header">
-                    <div class="title-group">
-                        <h2 id="prod-title">Trending Now</h2>
-                        <p>What's hot — popular picks from our community</p>
-                    </div>
-                    <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="products-grid" id="productsGrid" aria-live="polite"></div>
-            </div>
-        </section>
-
-        <!-- DEAL -->
-        <section class="section" id="deals" aria-labelledby="deals-title">
-            <div class="container">
-                <div class="section-header">
-                    <div class="title-group">
-                        <h2 id="deals-title">⚡ Flash Deal</h2>
-                        <p>Grab it before it's gone — limited stock</p>
-                    </div>
-                </div>
-                <div class="deal-wrap">
-                    <div class="deal-img">
-                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80" alt="MacBook Air M2" loading="lazy">
-                    </div>
-                    <div class="deal-content">
-                        <span class="tag"><i class="fas fa-bolt"></i> Limited Offer</span>
-                        <h3>MacBook Air M2</h3>
-                        <p class="desc">Thin, light, and incredibly powerful — the M2 chip redefines performance.</p>
-                        <div>
-                            <span class="price-big">$999 <span class="old">$1,199</span></span>
-                        </div>
-                        <p class="stock">Only <strong>12</strong> items left — hurry!</p>
-                        <div class="timer-grid" id="dealTimer">
-                            <div class="timer-box">
-                                <div class="num" id="dealDays">0</div>
-                                <div class="label">Days</div>
-                            </div>
-                            <div class="timer-box">
-                                <div class="num" id="dealHours">00</div>
-                                <div class="label">Hours</div>
-                            </div>
-                            <div class="timer-box">
-                                <div class="num" id="dealMinutes">00</div>
-                                <div class="label">Mins</div>
-                            </div>
-                            <div class="timer-box">
-                                <div class="num" id="dealSeconds">00</div>
-                                <div class="label">Secs</div>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary" id="buyDeal"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- TESTIMONIALS -->
-        <section class="section" id="testimonials" aria-labelledby="test-title">
-            <div class="container">
-                <div class="section-header">
-                    <div class="title-group">
-                        <h2 id="test-title">What Our Customers Say</h2>
-                        <p>Real reviews from real people</p>
-                    </div>
-                </div>
-                <div class="testimonials-scroll" id="testimonialsList"></div>
-            </div>
-        </section>
-
-        <!-- NEWSLETTER -->
-        <section class="section" aria-labelledby="news-title">
-            <div class="container">
-                <div class="newsletter-wrap">
-                    <div class="text">
-                        <h3 id="news-title">Stay in the Loop</h3>
-                        <p>Get exclusive offers, early access & new arrivals</p>
-                    </div>
-                    <form id="newsletterForm" onsubmit="return false;">
-                        <input type="email" id="newsletterEmail" placeholder="Enter your email" aria-label="Email" required />
-                        <button class="btn" id="subscribeBtn"><i class="fas fa-paper-plane"></i> Subscribe</button>
-                        <div id="newsletterMsg"></div>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- ===== FOOTER ===== -->
-    <footer>
+    <!-- MOBILE MENU -->
+    <div id="mobileMenu">
         <div class="container">
-            <div class="footer-grid">
-                <div class="brand-col">
-                    <div class="brand">
-                        <i class="fas fa-store-alt"></i>
-                        <span>Nexus<span class="accent">Shop</span></span>
-                    </div>
-                    <p>Modern e‑commerce demo built with care. Quality products, seamless experience.</p>
-                    <div class="socials">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="col">
-                    <h5>Company</h5>
-                    <ul>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Press</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
-                </div>
-                <div class="col">
-                    <h5>Support</h5>
-                    <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Shipping</a></li>
-                        <li><a href="#">Returns</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col">
-                    <h5>Legal</h5>
-                    <ul>
-                        <li><a href="#">Privacy</a></li>
-                        <li><a href="#">Terms</a></li>
-                        <li><a href="#">Cookies</a></li>
-                    </ul>
-                </div>
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-home"></i>
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#services">
+                        <i class="fas fa-truck-moving"></i>
+                        Transport Services
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#parts">
+                        <i class="fas fa-cogs"></i>
+                        Lorry Parts
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#deals">
+                        <i class="fas fa-tags"></i>
+                        Offers
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#reviews">
+                        <i class="fas fa-star"></i>
+                        Reviews
+                    </a>
+                </li>
+
+                <li>
+                    <a href="tel:+919876543210">
+                        <i class="fas fa-phone"></i>
+                        Call Kohinoor
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+
+<!-- ============================================================
+     MAIN
+============================================================ -->
+<main>
+
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section class="hero">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <div class="hero-tag">
+                <i class="fas fa-truck"></i>
+                Trusted Lorry Service
             </div>
-            <div class="footer-bottom">
-                &copy; <span id="year"></span> NexusShop. All rights reserved.
+
+            <h1>
+                Reliable <span>Lorry Transport</span>
+                & Genuine Parts
+            </h1>
+
+            <p>
+                Kohinoor provides dependable lorry transport services
+                along with quality spare parts, tyres, batteries,
+                engine components and commercial vehicle accessories.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button
+                    class="btn btn-yellow"
+                    id="transportBtn">
+                    <i class="fas fa-truck-moving"></i>
+                    Book Transport
+                </button>
+
+                <button
+                    class="btn btn-red"
+                    id="partsBtn">
+                    <i class="fas fa-cogs"></i>
+                    Browse Lorry Parts
+                </button>
+
+            </div>
+
+
+            <div class="hero-stats">
+
+                <div class="hero-stat">
+                    <strong>15+</strong>
+                    <span>Years Experience</span>
+                </div>
+
+                <div class="hero-stat">
+                    <strong>5000+</strong>
+                    <span>Successful Trips</span>
+                </div>
+
+                <div class="hero-stat">
+                    <strong>24/7</strong>
+                    <span>Transport Support</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     SERVICES
+============================================================ -->
+<section class="section" id="services">
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <div>
+                <h2 class="section-title">
+                    Our Transport Services
+                </h2>
+
+                <p class="section-subtitle">
+                    Safe, reliable and professional commercial vehicle transport.
+                </p>
+
+                <div class="section-line"></div>
+            </div>
+
+            <a href="#enquiry" class="view-all">
+                Get Quote →
+            </a>
+
+        </div>
+
+
+        <div class="service-grid">
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    <i class="fas fa-truck-moving"></i>
+                </div>
+
+                <h3>Full Load Transport</h3>
+
+                <p>
+                    Reliable full-load lorry transport for
+                    commercial and industrial cargo.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    <i class="fas fa-boxes-stacked"></i>
+                </div>
+
+                <h3>Part Load Service</h3>
+
+                <p>
+                    Cost-effective part-load solutions for
+                    smaller shipments and business deliveries.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    <i class="fas fa-route"></i>
+                </div>
+
+                <h3>Long Distance</h3>
+
+                <p>
+                    Interstate and long-distance lorry
+                    transportation with dependable delivery.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    <i class="fas fa-warehouse"></i>
+                </div>
+
+                <h3>Loading & Delivery</h3>
+
+                <p>
+                    Professional loading, unloading and
+                    delivery coordination for your cargo.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     PART CATEGORIES
+============================================================ -->
+<section class="section" id="parts" style="background:#fff;">
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <div>
+                <h2 class="section-title">
+                    Lorry Spare Parts
+                </h2>
+
+                <p class="section-subtitle">
+                    Quality replacement parts for commercial vehicles.
+                </p>
+
+                <div class="section-line"></div>
+            </div>
+
+            <a href="#products" class="view-all">
+                View Parts →
+            </a>
+
+        </div>
+
+
+        <div class="parts-grid" id="partsGrid"></div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     PRODUCTS
+============================================================ -->
+<section class="section" id="products">
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <div>
+                <h2 class="section-title">
+                    Popular Lorry Parts
+                </h2>
+
+                <p class="section-subtitle">
+                    Frequently requested parts from our customers.
+                </p>
+
+                <div class="section-line"></div>
+            </div>
+
+            <a href="#" class="view-all">
+                All Parts →
+            </a>
+
+        </div>
+
+
+        <div
+            class="parts-products"
+            id="productsGrid">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     TRANSPORT BANNER
+============================================================ -->
+<section class="section">
+
+    <div class="container">
+
+        <div class="transport-banner">
+
+            <div class="transport-content">
+
+                <span class="transport-tag">
+                    Kohinoor Transport
+                </span>
+
+                <h2>
+                    Need a Lorry for Your Next Load?
+                </h2>
+
+                <p>
+                    Tell us your pickup location, destination,
+                    cargo type and required vehicle. Our team
+                    will help arrange the right lorry for your load.
+                </p>
+
+                <button
+                    class="btn btn-yellow"
+                    id="quoteBtn">
+                    <i class="fas fa-file-invoice"></i>
+                    Request Transport Quote
+                </button>
+
+                <div class="transport-features">
+
+                    <div class="transport-feature">
+                        <i class="fas fa-check-circle"></i>
+                        Reliable Drivers
+                    </div>
+
+                    <div class="transport-feature">
+                        <i class="fas fa-check-circle"></i>
+                        Timely Delivery
+                    </div>
+
+                    <div class="transport-feature">
+                        <i class="fas fa-check-circle"></i>
+                        Competitive Rates
+                    </div>
+
+                </div>
+
+            </div>
+
+            <i class="fas fa-truck truck-icon"></i>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     FLASH DEAL
+============================================================ -->
+<section class="section" id="deals">
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <div>
+                <h2 class="section-title">
+                    Today's Parts Deal
+                </h2>
+
+                <p class="section-subtitle">
+                    Limited-time offer on selected commercial vehicle parts.
+                </p>
+
+                <div class="section-line"></div>
+            </div>
+
+        </div>
+
+
+        <div class="deal">
+
+            <div class="deal-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=1000&q=85"
+                    alt="Truck mechanical part"
+                    loading="lazy">
+
+            </div>
+
+
+            <div class="deal-content">
+
+                <span class="deal-badge">
+                    Limited Offer
+                </span>
+
+                <h3>
+                    Heavy Duty Brake Kit
+                </h3>
+
+                <p>
+                    Durable brake components designed for
+                    commercial and heavy-duty lorry applications.
+                </p>
+
+                <div>
+                    <span class="deal-price">
+                        ₹8,999
+                    </span>
+
+                    <span class="deal-old">
+                        ₹11,500
+                    </span>
+                </div>
+
+                <div class="stock">
+                    Only <strong>8 kits</strong> available.
+                </div>
+
+
+                <div class="timer">
+
+                    <div class="timer-box">
+                        <strong id="dealHours">00</strong>
+                        <small>Hours</small>
+                    </div>
+
+                    <div class="timer-box">
+                        <strong id="dealMinutes">00</strong>
+                        <small>Mins</small>
+                    </div>
+
+                    <div class="timer-box">
+                        <strong id="dealSeconds">00</strong>
+                        <small>Secs</small>
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="btn btn-red"
+                    id="buyDeal">
+
+                    <i class="fas fa-cart-plus"></i>
+                    Add Deal to Enquiry
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     WHY KOHINOOR
+============================================================ -->
+<section class="section" style="background:#fff;">
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <div>
+                <h2 class="section-title">
+                    Why Choose Kohinoor?
+                </h2>
+
+                <p class="section-subtitle">
+                    Built around reliability, service and value.
+                </p>
+
+                <div class="section-line"></div>
             </div>
         </div>
-    </footer>
 
-    <!-- ===== SCRIPT ===== -->
-    <script>
-        // ============================================================
-        // DATA
-        // ============================================================
-        const CATEGORIES = [
-            { id: 'phones', name: 'Smartphones', icon: 'fa-mobile-alt', count: 24 },
-            { id: 'laptops', name: 'Laptops', icon: 'fa-laptop', count: 18 },
-            { id: 'clothing', name: 'Clothing', icon: 'fa-tshirt', count: 42 },
-            { id: 'gadgets', name: 'Gadgets', icon: 'fa-headphones', count: 31 },
-            { id: 'footwear', name: 'Footwear', icon: 'fa-shoe-prints', count: 27 },
-            { id: 'accessories', name: 'Accessories', icon: 'fa-watch', count: 39 }
-        ];
 
-        const PRODUCTS = [
-            { id: 1, title: 'iPhone 14 Pro Max', price: 1099, oldPrice: 1199, rating: 5, reviews: 128, badge: 'New',
-                img: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?auto=format&fit=crop&w=600&q=80',
-                category: 'Smartphones' },
-            { id: 2, title: 'MacBook Pro 14"', price: 1999, rating: 4, reviews: 86, badge: '',
-                img: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=600&q=80',
-                category: 'Laptops' },
-            { id: 3, title: 'Apple Watch Series 8', price: 349, oldPrice: 399, rating: 5, reviews: 214, badge: 'Sale',
-                img: 'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?auto=format&fit=crop&w=600&q=80',
-                category: 'Accessories' },
-            { id: 4, title: 'Nike Air Max 270', price: 150, rating: 4, reviews: 53, badge: '',
-                img: 'https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=600&q=80',
-                category: 'Footwear' },
-            { id: 5, title: 'Sony A7 IV Camera', price: 2499, rating: 5, reviews: 42, badge: 'New',
-                img: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=600&q=80',
-                category: 'Gadgets' },
-            { id: 6, title: 'Chanel No. 5', price: 120, rating: 5, reviews: 189, badge: '',
-                img: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=600&q=80',
-                category: 'Accessories' },
-            { id: 7, title: 'Travel Backpack', price: 79, oldPrice: 99, rating: 4, reviews: 67, badge: 'Sale',
-                img: 'https://images.unsplash.com/photo-1551232864-3f0890e580d9?auto=format&fit=crop&w=600&q=80',
-                category: 'Accessories' },
-            { id: 8, title: 'Sony WH-1000XM5', price: 399, rating: 5, reviews: 156, badge: '',
-                img: 'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=600&q=80',
-                category: 'Gadgets' }
-        ];
+        <div class="why-grid">
 
-        const TESTIMONIALS = [{
-            name: 'Ava Martin',
-            role: 'Verified Buyer',
-            avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=80&q=80',
-            text: 'Fast shipping and excellent support. The product exceeded my expectations!',
+            <div class="why-card">
+                <div class="why-number">01</div>
+                <h3>Genuine Quality Parts</h3>
+                <p>
+                    We focus on dependable spare parts and
+                    components suitable for commercial vehicles.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-number">02</div>
+                <h3>Experienced Transport Team</h3>
+                <p>
+                    Our experienced team helps coordinate
+                    vehicles, routes and delivery requirements.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-number">03</div>
+                <h3>Fast Customer Support</h3>
+                <p>
+                    Contact us for transport requirements,
+                    parts availability and quick quotations.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     REVIEWS
+============================================================ -->
+<section class="section" id="reviews">
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <div>
+                <h2 class="section-title">
+                    Customer Reviews
+                </h2>
+
+                <p class="section-subtitle">
+                    What our transport and parts customers say.
+                </p>
+
+                <div class="section-line"></div>
+            </div>
+
+        </div>
+
+
+        <div
+            class="reviews"
+            id="reviewsList">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     ENQUIRY
+============================================================ -->
+<section class="section" id="enquiry">
+
+    <div class="container">
+
+        <div class="enquiry">
+
+            <div>
+                <h2>
+                    Need Transport or Lorry Parts?
+                </h2>
+
+                <p>
+                    Contact Kohinoor today for pricing,
+                    availability and transport enquiries.
+                </p>
+            </div>
+
+            <div class="enquiry-actions">
+
+                <button
+                    class="btn btn-red"
+                    onclick="callBusiness()">
+                    <i class="fas fa-phone"></i>
+                    Call Now
+                </button>
+
+                <button
+                    class="btn btn-outline"
+                    onclick="whatsappBusiness()">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div class="footer-brand">
+
+                <a href="#" class="brand">
+
+                    <div class="brand-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+
+                    <div class="brand-text" style="color:#fff;">
+                        Kohinoor
+                        <span>Lorry Transport & Parts</span>
+                    </div>
+
+                </a>
+
+                <p>
+                    Reliable lorry transport services and
+                    quality commercial vehicle spare parts
+                    for businesses and fleet operators.
+                </p>
+
+                <div class="socials">
+
+                    <a href="#" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <a href="#" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+
+                    <a href="#" aria-label="WhatsApp"
+                       onclick="whatsappBusiness(); return false;">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <h4 class="footer-title">
+                    Transport
+                </h4>
+
+                <ul class="footer-list">
+
+                    <li>
+                        <a href="#services">
+                            Full Load Transport
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#services">
+                            Part Load
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#services">
+                            Long Distance
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#services">
+                            Loading & Delivery
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h4 class="footer-title">
+                    Lorry Parts
+                </h4>
+
+                <ul class="footer-list">
+
+                    <li>
+                        <a href="#parts">
+                            Engine Parts
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#parts">
+                            Brake Parts
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#parts">
+                            Tyres
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#parts">
+                            Batteries
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h4 class="footer-title">
+                    Contact
+                </h4>
+
+                <ul class="footer-list">
+
+                    <li>
+                        <a href="tel:+919876543210">
+                            <i class="fas fa-phone"></i>
+                            +91 98765 43210
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="mailto:kohinoorlorry@gmail.com">
+                            <i class="fas fa-envelope"></i>
+                            kohinoorlorry@gmail.com
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-location-dot"></i>
+                            Your Business Location
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            © <span id="year"></span>
+            Kohinoor Lorry Transport & Parts.
+            All Rights Reserved.
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+
+    /* ============================================================
+       PART CATEGORIES
+    ============================================================ */
+
+    const PART_CATEGORIES = [
+
+        {
+            id: 'engine',
+            name: 'Engine Parts',
+            icon: 'fa-gears',
+            count: 86
+        },
+
+        {
+            id: 'brakes',
+            name: 'Brake Parts',
+            icon: 'fa-circle-stop',
+            count: 54
+        },
+
+        {
+            id: 'tyres',
+            name: 'Lorry Tyres',
+            icon: 'fa-circle-dot',
+            count: 32
+        },
+
+        {
+            id: 'battery',
+            name: 'Batteries',
+            icon: 'fa-car-battery',
+            count: 19
+        },
+
+        {
+            id: 'lights',
+            name: 'Lights',
+            icon: 'fa-lightbulb',
+            count: 41
+        },
+
+        {
+            id: 'filters',
+            name: 'Filters',
+            icon: 'fa-filter',
+            count: 37
+        }
+
+    ];
+
+
+    /* ============================================================
+       PRODUCTS
+    ============================================================ */
+
+    const PRODUCTS = [
+
+        {
+            id: 1,
+            title: 'Heavy Duty Brake Pad Set',
+            price: 2499,
+            oldPrice: 2999,
+            rating: 5,
+            reviews: 84,
+            badge: 'Popular',
+            img: 'https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=700&q=80',
+            category: 'Brake Parts'
+        },
+
+        {
+            id: 2,
+            title: 'Commercial Vehicle Air Filter',
+            price: 899,
+            oldPrice: 1099,
+            rating: 4,
+            reviews: 47,
+            badge: 'Sale',
+            img: 'https://images.unsplash.com/photo-1632823469850-1c4fd5b0f8d9?auto=format&fit=crop&w=700&q=80',
+            category: 'Filters'
+        },
+
+        {
+            id: 3,
+            title: 'Heavy Duty Truck Battery',
+            price: 8999,
+            oldPrice: 9999,
+            rating: 5,
+            reviews: 61,
+            badge: 'Best Seller',
+            img: 'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80',
+            category: 'Batteries'
+        },
+
+        {
+            id: 4,
+            title: 'Lorry LED Headlight Pair',
+            price: 3299,
+            rating: 4,
+            reviews: 38,
+            badge: '',
+            img: 'https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=700&q=80',
+            category: 'Lights'
+        },
+
+        {
+            id: 5,
+            title: 'Heavy Duty Engine Oil Filter',
+            price: 649,
+            rating: 5,
+            reviews: 92,
+            badge: 'Popular',
+            img: 'https://images.unsplash.com/photo-1635784063496-8e44b7a9b89f?auto=format&fit=crop&w=700&q=80',
+            category: 'Filters'
+        },
+
+        {
+            id: 6,
+            title: 'Commercial Lorry Clutch Kit',
+            price: 7499,
+            oldPrice: 8499,
+            rating: 4,
+            reviews: 29,
+            badge: 'Sale',
+            img: 'https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=700&q=80',
+            category: 'Engine Parts'
+        },
+
+        {
+            id: 7,
+            title: 'Heavy Duty Fan Belt',
+            price: 799,
+            rating: 5,
+            reviews: 53,
+            badge: '',
+            img: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=700&q=80',
+            category: 'Engine Parts'
+        },
+
+        {
+            id: 8,
+            title: 'Lorry Wheel & Tyre Package',
+            price: 18999,
+            oldPrice: 21999,
+            rating: 5,
+            reviews: 71,
+            badge: 'Deal',
+            img: 'https://images.unsplash.com/photo-1578844251758-2f71da64c46f?auto=format&fit=crop&w=700&q=80',
+            category: 'Lorry Tyres'
+        }
+
+    ];
+
+
+    /* ============================================================
+       REVIEWS
+    ============================================================ */
+
+    const REVIEWS = [
+
+        {
+            name: 'Ravi Kumar',
+            role: 'Fleet Owner',
+            avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80',
+            text: 'Kohinoor has been very reliable for our transport requirements. Their team responds quickly and the delivery coordination is excellent.',
             stars: 5
-        }, {
-            name: 'Michael Lee',
-            role: 'Frequent Shopper',
-            avatar: 'https://images.unsplash.com/photo-1546456073-6712f79251bb?auto=format&fit=crop&w=80&q=80',
-            text: 'Great selection and smooth checkout. Will definitely shop again.',
+        },
+
+        {
+            name: 'Suresh Reddy',
+            role: 'Transport Operator',
+            avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80',
+            text: 'We regularly purchase lorry parts from Kohinoor. Good quality and the staff help us find the correct parts.',
+            stars: 5
+        },
+
+        {
+            name: 'Imran Khan',
+            role: 'Business Owner',
+            avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80',
+            text: 'Good transport service and reasonable pricing. I would recommend Kohinoor for commercial vehicle requirements.',
             stars: 4
-        }, {
-            name: 'Sophia Chen',
-            role: 'Designer',
-            avatar: 'https://images.unsplash.com/photo-1494790108378-be9c29b29330?auto=format&fit=crop&w=80&q=80',
-            text: 'Love the quality and the packaging. Everything arrived in perfect condition.',
+        },
+
+        {
+            name: 'Prakash Rao',
+            role: 'Fleet Manager',
+            avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80',
+            text: 'The spare parts section is very useful for our fleet maintenance. Fast response whenever we need something urgently.',
             stars: 5
-        }, {
-            name: 'James Wilson',
-            role: 'Tech Enthusiast',
-            avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80',
-            text: 'Amazing prices on electronics. The M2 MacBook deal was unbeatable.',
-            stars: 5
-        }];
-
-        // ============================================================
-        // STATE
-        // ============================================================
-        let cartCount = 0;
-
-        // ============================================================
-        // DOM REFS
-        // ============================================================
-        const categoriesGrid = document.getElementById('categoriesGrid');
-        const productsGrid = document.getElementById('productsGrid');
-        const cartCountEl = document.getElementById('cartCount');
-        const searchInput = document.getElementById('searchInput');
-        const searchBtn = document.getElementById('searchBtn');
-        const mobileToggle = document.getElementById('mobileToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const newsletterForm = document.getElementById('newsletterForm');
-        const newsletterEmail = document.getElementById('newsletterEmail');
-        const newsletterMsg = document.getElementById('newsletterMsg');
-        const testimonialsList = document.getElementById('testimonialsList');
-
-        // ============================================================
-        // RENDER FUNCTIONS
-        // ============================================================
-        function renderCategories() {
-            categoriesGrid.innerHTML = '';
-            CATEGORIES.forEach(cat => {
-                const el = document.createElement('div');
-                el.className = 'cat-card';
-                el.innerHTML = `
-                    <div class="icon-wrap"><i class="fas ${cat.icon}"></i></div>
-                    <h4>${cat.name}</h4>
-                    <div class="count">${cat.count} items</div>
-                `;
-                el.addEventListener('click', () => {
-                    searchInput.value = cat.name;
-                    filterProducts(cat.name);
-                    document.getElementById('products').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                });
-                categoriesGrid.appendChild(el);
-            });
         }
 
-        function renderProducts(list) {
-            productsGrid.innerHTML = '';
-            if (!list.length) {
-                productsGrid.innerHTML =
-                `<p style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);">No products found.</p>`;
-                return;
-            }
-            list.forEach(p => {
-                const el = document.createElement('article');
-                el.className = 'product-card';
-                const badgeClass = p.badge === 'Sale' ? 'sale' : '';
-                const badgeHtml = p.badge ? `<span class="badge ${badgeClass}">${p.badge}</span>` : '';
-                const oldPriceHtml = p.oldPrice ? `<span class="old-price">$${p.oldPrice.toLocaleString()}</span>` :
-                '';
-                const stars = '★'.repeat(Math.round(p.rating)) + '☆'.repeat(5 - Math.round(p.rating));
-                el.innerHTML = `
-                    <div class="img-wrap">
-                        <img src="${p.img}" alt="${escapeHtml(p.title)}" loading="lazy">
-                        ${badgeHtml}
-                        <button class="wish-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
-                    </div>
-                    <div class="body">
-                        <div class="category-tag">${p.category}</div>
-                        <h5>${escapeHtml(p.title)}</h5>
-                        <div class="price-row">
-                            <span class="price">$${p.price.toLocaleString()}</span>
-                            ${oldPriceHtml}
-                        </div>
-                        <div class="rating">
-                            ${stars} <span>(${p.reviews})</span>
-                        </div>
-                    </div>
-                    <div class="footer">
-                        <button class="add-btn" data-id="${p.id}"><i class="fas fa-cart-plus"></i> Add</button>
-                    </div>
-                `;
-                productsGrid.appendChild(el);
-            });
+    ];
 
-            // Add to cart listeners
-            productsGrid.querySelectorAll('.add-btn').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const id = Number(this.dataset.id);
-                    addToCart(id, this);
-                });
-            });
-        }
 
-        function renderTestimonials() {
-            testimonialsList.innerHTML = '';
-            TESTIMONIALS.forEach(t => {
-                const stars = '★'.repeat(t.stars) + '☆'.repeat(5 - t.stars);
-                const el = document.createElement('div');
-                el.className = 'testimonial-card';
-                el.innerHTML = `
-                    <div class="stars">${stars}</div>
-                    <blockquote>“${escapeHtml(t.text)}”</blockquote>
-                    <div class="author">
-                        <img class="avatar" src="${t.avatar}" alt="${escapeHtml(t.name)}" loading="lazy">
-                        <div>
-                            <div class="name">${escapeHtml(t.name)}</div>
-                            <div class="role">${escapeHtml(t.role)}</div>
-                        </div>
-                    </div>
-                `;
-                testimonialsList.appendChild(el);
-            });
-        }
+    /* ============================================================
+       STATE
+    ============================================================ */
 
-        // ============================================================
-        // UTILITY FUNCTIONS
-        // ============================================================
-        function escapeHtml(text) {
-            return String(text).replace(/[&<>"']/g, s => ({
-                '&': '&amp;',
-                '<': '&lt;',
-                '>': '&gt;',
-                '"': '&quot;',
-                "'": '&#39;'
-            } [s]));
-        }
+    let cartCount = 0;
 
-        function updateCartCount() {
-            cartCountEl.textContent = cartCount;
-            // animate
-            cartCountEl.style.transform = 'scale(1.3)';
-            setTimeout(() => cartCountEl.style.transform = 'scale(1)', 200);
-        }
 
-        function addToCart(productId, btnEl) {
-            const p = PRODUCTS.find(x => x.id === productId);
-            if (!p) return;
-            cartCount++;
-            updateCartCount();
+    /* ============================================================
+       DOM
+    ============================================================ */
 
-            if (btnEl) {
-                const orig = btnEl.innerHTML;
-                btnEl.innerHTML = '<i class="fas fa-check"></i> Added';
-                btnEl.classList.add('added');
-                setTimeout(() => {
-                    btnEl.innerHTML = orig;
-                    btnEl.classList.remove('added');
-                }, 1500);
-            }
-            // subtle feedback
-            const cartBtn = document.getElementById('cartBtn');
-            cartBtn.style.color = 'var(--accent)';
-            setTimeout(() => cartBtn.style.color = '', 400);
-        }
+    const partsGrid =
+        document.getElementById('partsGrid');
 
-        function filterProducts(query) {
-            const q = String(query || '').trim().toLowerCase();
-            if (!q) {
-                renderProducts(PRODUCTS);
-                return;
-            }
-            const filtered = PRODUCTS.filter(p =>
-                p.title.toLowerCase().includes(q) ||
-                p.category.toLowerCase().includes(q)
-            );
-            renderProducts(filtered);
-        }
+    const productsGrid =
+        document.getElementById('productsGrid');
 
-        // ============================================================
-        // DEAL TIMER
-        // ============================================================
-        (function setupDealTimer() {
-            const now = new Date();
-            const target = new Date(now.getTime() + (24 * 60 + 36) * 60 * 1000);
+    const reviewsList =
+        document.getElementById('reviewsList');
 
-            function tick() {
-                const diff = target - new Date();
-                if (diff <= 0) {
-                    document.getElementById('dealDays').textContent = '0';
-                    document.getElementById('dealHours').textContent = '00';
-                    document.getElementById('dealMinutes').textContent = '00';
-                    document.getElementById('dealSeconds').textContent = '00';
-                    return;
+    const cartCountEl =
+        document.getElementById('cartCount');
+
+    const mobileToggle =
+        document.getElementById('mobileToggle');
+
+    const mobileMenu =
+        document.getElementById('mobileMenu');
+
+
+    /* ============================================================
+       RENDER CATEGORIES
+    ============================================================ */
+
+    function renderCategories() {
+
+        partsGrid.innerHTML = '';
+
+        PART_CATEGORIES.forEach(category => {
+
+            const element =
+                document.createElement('div');
+
+            element.className =
+                'part-category';
+
+            element.innerHTML = `
+
+                <div class="part-icon">
+                    <i class="fas ${category.icon}"></i>
+                </div>
+
+                <h4>
+                    ${category.name}
+                </h4>
+
+                <span>
+                    ${category.count} items
+                </span>
+            `;
+
+
+            element.addEventListener(
+                'click',
+                () => {
+
+                    filterProducts(
+                        category.name
+                    );
+
+                    document
+                        .getElementById('products')
+                        .scrollIntoView({
+                            behavior: 'smooth'
+                        });
+
                 }
-                const days = Math.floor(diff / (24 * 3600 * 1000));
-                const hours = Math.floor((diff % (24 * 3600 * 1000)) / (3600 * 1000));
-                const mins = Math.floor((diff % (3600 * 1000)) / (60 * 1000));
-                const secs = Math.floor((diff % (60 * 1000)) / 1000);
-                document.getElementById('dealDays').textContent = days;
-                document.getElementById('dealHours').textContent = String(hours).padStart(2, '0');
-                document.getElementById('dealMinutes').textContent = String(mins).padStart(2, '0');
-                document.getElementById('dealSeconds').textContent = String(secs).padStart(2, '0');
+            );
+
+
+            partsGrid.appendChild(element);
+
+        });
+
+    }
+
+
+    /* ============================================================
+       ESCAPE HTML
+    ============================================================ */
+
+    function escapeHtml(text) {
+
+        return String(text).replace(
+            /[&<>"']/g,
+
+            function(character) {
+
+                return {
+
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#39;'
+
+                }[character];
+
             }
-            tick();
-            setInterval(tick, 1000);
-        })();
+        );
 
-        // ============================================================
-        // EVENT BINDINGS
-        // ============================================================
+    }
 
-        // Search
-        searchBtn.addEventListener('click', () => filterProducts(searchInput.value));
-        searchInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') filterProducts(e.target.value);
+
+    /* ============================================================
+       RENDER PRODUCTS
+    ============================================================ */
+
+    function renderProducts(list) {
+
+        productsGrid.innerHTML = '';
+
+        if (!list.length) {
+
+            productsGrid.innerHTML = `
+
+                <div style="
+                    grid-column:1/-1;
+                    text-align:center;
+                    padding:50px;
+                    color:var(--muted);
+                ">
+
+                    <i
+                        class="fas fa-box-open"
+                        style="
+                            font-size:35px;
+                            margin-bottom:12px;
+                        ">
+                    </i>
+
+                    <p>
+                        No lorry parts found.
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        list.forEach(product => {
+
+            const element =
+                document.createElement('article');
+
+            element.className =
+                'product-card';
+
+
+            const badgeClass =
+                product.badge === 'Sale'
+                    ? 'yellow'
+                    : '';
+
+
+            const badge =
+                product.badge
+                    ? `
+                        <span class="
+                            product-label
+                            ${badgeClass}
+                        ">
+                            ${product.badge}
+                        </span>
+                    `
+                    : '';
+
+
+            const oldPrice =
+                product.oldPrice
+                    ? `
+                        <span class="old-price">
+                            ₹${product.oldPrice.toLocaleString('en-IN')}
+                        </span>
+                    `
+                    : '';
+
+
+            const stars =
+                '★'.repeat(
+                    Math.round(product.rating)
+                )
+                +
+                '☆'.repeat(
+                    5 - Math.round(product.rating)
+                );
+
+
+            element.innerHTML = `
+
+                <div class="product-image">
+
+                    <img
+                        src="${product.img}"
+                        alt="${escapeHtml(product.title)}"
+                        loading="lazy">
+
+                    ${badge}
+
+                </div>
+
+
+                <div class="product-body">
+
+                    <div class="product-category">
+                        ${product.category}
+                    </div>
+
+                    <h3 class="product-title">
+                        ${escapeHtml(product.title)}
+                    </h3>
+
+                    <div class="product-rating">
+                        ${stars}
+                        <span>
+                            (${product.reviews})
+                        </span>
+                    </div>
+
+                    <div class="price-row">
+
+                        <span class="price">
+                            ₹${product.price.toLocaleString('en-IN')}
+                        </span>
+
+                        ${oldPrice}
+
+                    </div>
+
+                    <button
+                        class="add-part"
+                        data-id="${product.id}">
+
+                        <i class="fas fa-cart-plus"></i>
+                        Add to Enquiry
+
+                    </button>
+
+                </div>
+
+            `;
+
+
+            productsGrid.appendChild(element);
+
         });
 
-        // Mobile menu
-        mobileToggle.addEventListener('click', () => {
-            const isOpen = mobileMenu.style.display === 'block';
-            mobileMenu.style.display = isOpen ? 'none' : 'block';
-            mobileToggle.innerHTML = isOpen ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
-        });
 
-        // Close mobile menu on link click
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.style.display = 'none';
-                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        productsGrid
+            .querySelectorAll('.add-part')
+            .forEach(button => {
+
+                button.addEventListener(
+                    'click',
+                    function() {
+
+                        const id =
+                            Number(
+                                this.dataset.id
+                            );
+
+                        addToCart(
+                            id,
+                            this
+                        );
+
+                    }
+                );
+
             });
+
+    }
+
+
+    /* ============================================================
+       ADD TO CART
+    ============================================================ */
+
+    function addToCart(productId, button) {
+
+        const product =
+            PRODUCTS.find(
+                item => item.id === productId
+            );
+
+
+        if (!product) return;
+
+
+        cartCount++;
+
+        updateCart();
+
+
+        const original =
+            button.innerHTML;
+
+
+        button.innerHTML =
+            '<i class="fas fa-check"></i> Added';
+
+
+        button.classList.add('added');
+
+
+        setTimeout(() => {
+
+            button.innerHTML =
+                original;
+
+            button.classList.remove(
+                'added'
+            );
+
+        }, 1500);
+
+    }
+
+
+    /* ============================================================
+       CART
+    ============================================================ */
+
+    function updateCart() {
+
+        cartCountEl.textContent =
+            cartCount;
+
+
+        cartCountEl.style.transform =
+            'scale(1.3)';
+
+
+        setTimeout(() => {
+
+            cartCountEl.style.transform =
+                'scale(1)';
+
+        }, 200);
+
+    }
+
+
+    /* ============================================================
+       FILTER PRODUCTS
+    ============================================================ */
+
+    function filterProducts(query) {
+
+        const q =
+            String(query || '')
+                .trim()
+                .toLowerCase();
+
+
+        if (!q) {
+
+            renderProducts(
+                PRODUCTS
+            );
+
+            return;
+
+        }
+
+
+        const filtered =
+            PRODUCTS.filter(product =>
+
+                product.title
+                    .toLowerCase()
+                    .includes(q)
+
+                ||
+
+                product.category
+                    .toLowerCase()
+                    .includes(q)
+
+            );
+
+
+        renderProducts(
+            filtered
+        );
+
+    }
+
+
+    /* ============================================================
+       REVIEWS
+    ============================================================ */
+
+    function renderReviews() {
+
+        reviewsList.innerHTML = '';
+
+
+        REVIEWS.forEach(review => {
+
+            const element =
+                document.createElement('div');
+
+
+            element.className =
+                'review';
+
+
+            const stars =
+                '★'.repeat(review.stars)
+                +
+                '☆'.repeat(
+                    5 - review.stars
+                );
+
+
+            element.innerHTML = `
+
+                <div class="review-stars">
+                    ${stars}
+                </div>
+
+                <blockquote>
+                    “${escapeHtml(review.text)}”
+                </blockquote>
+
+                <div class="review-author">
+
+                    <img
+                        class="review-avatar"
+                        src="${review.avatar}"
+                        alt="${escapeHtml(review.name)}"
+                        loading="lazy">
+
+                    <div>
+
+                        <div class="review-name">
+                            ${escapeHtml(review.name)}
+                        </div>
+
+                        <div class="review-role">
+                            ${escapeHtml(review.role)}
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            reviewsList.appendChild(
+                element
+            );
+
         });
 
-        // Hero buttons
-        document.getElementById('shopNow').addEventListener('click', () => {
-            document.getElementById('products').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-        document.getElementById('exploreDeals').addEventListener('click', () => {
-            document.getElementById('deals').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+
+    /* ============================================================
+       MOBILE MENU
+    ============================================================ */
+
+    mobileToggle.addEventListener(
+        'click',
+        () => {
+
+            const open =
+                mobileMenu.style.display === 'block';
+
+
+            mobileMenu.style.display =
+                open ? 'none' : 'block';
+
+
+            mobileToggle.innerHTML =
+                open
+
+                ? '<i class="fas fa-bars"></i>'
+
+                : '<i class="fas fa-times"></i>';
+
+        }
+    );
+
+
+    mobileMenu
+        .querySelectorAll('a')
+        .forEach(link => {
+
+            link.addEventListener(
+                'click',
+                () => {
+
+                    mobileMenu.style.display =
+                        'none';
+
+                    mobileToggle.innerHTML =
+                        '<i class="fas fa-bars"></i>';
+
+                }
+            );
+
         });
 
-        // Deal buy
-        document.getElementById('buyDeal').addEventListener('click', function() {
-            cartCount++;
-            updateCartCount();
-            const orig = this.innerHTML;
-            this.innerHTML = '<i class="fas fa-check"></i> Added!';
-            this.style.background = 'var(--success)';
-            setTimeout(() => {
-                this.innerHTML = orig;
-                this.style.background = '';
-            }, 1600);
-        });
 
-        // Newsletter
-        newsletterForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = newsletterEmail.value.trim();
-            if (!email || !email.includes('@')) {
-                newsletterMsg.textContent = 'Please enter a valid email address.';
-                newsletterMsg.style.color = '#ffb3b3';
-                newsletterMsg.style.display = 'block';
+    /* ============================================================
+       HERO BUTTONS
+    ============================================================ */
+
+    document
+        .getElementById('transportBtn')
+        .addEventListener(
+            'click',
+            () => {
+
+                document
+                    .getElementById('enquiry')
+                    .scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+            }
+        );
+
+
+    document
+        .getElementById('partsBtn')
+        .addEventListener(
+            'click',
+            () => {
+
+                document
+                    .getElementById('parts')
+                    .scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+            }
+        );
+
+
+    document
+        .getElementById('quoteBtn')
+        .addEventListener(
+            'click',
+            () => {
+
+                alert(
+                    'Please call Kohinoor at +91 98765 43210 for a transport quotation.'
+                );
+
+            }
+        );
+
+
+    /* ============================================================
+       DEAL
+    ============================================================ */
+
+    document
+        .getElementById('buyDeal')
+        .addEventListener(
+            'click',
+            function() {
+
+                cartCount++;
+
+                updateCart();
+
+
+                const original =
+                    this.innerHTML;
+
+
+                this.innerHTML =
+                    '<i class="fas fa-check"></i> Added to Enquiry';
+
+
+                this.style.background =
+                    'var(--green)';
+
+
+                setTimeout(() => {
+
+                    this.innerHTML =
+                        original;
+
+                    this.style.background =
+                        '';
+
+                }, 1700);
+
+            }
+        );
+
+
+    /* ============================================================
+       DEAL TIMER
+    ============================================================ */
+
+    (function setupTimer() {
+
+        const target =
+            new Date(
+                Date.now()
+                +
+                (
+                    7 * 60 * 60
+                    +
+                    45 * 60
+                    +
+                    30
+                )
+                * 1000
+            );
+
+
+        function tick() {
+
+            const difference =
+                target - new Date();
+
+
+            if (difference <= 0) {
+
+                document
+                    .getElementById('dealHours')
+                    .textContent = '00';
+
+                document
+                    .getElementById('dealMinutes')
+                    .textContent = '00';
+
+                document
+                    .getElementById('dealSeconds')
+                    .textContent = '00';
+
                 return;
+
             }
-            newsletterMsg.textContent = '🎉 Thanks for subscribing!';
-            newsletterMsg.style.color = '#a8e6cf';
-            newsletterMsg.style.display = 'block';
-            newsletterEmail.value = '';
-            setTimeout(() => {
-                newsletterMsg.style.display = 'none';
-            }, 3500);
-        });
 
-        // Cart button click feedback
-        document.getElementById('cartBtn').addEventListener('click', () => {
-            alert(`🛒 Your cart has ${cartCount} item${cartCount !== 1 ? 's' : ''}.`);
-        });
 
-        // Year in footer
-        document.getElementById('year').textContent = new Date().getFullYear();
+            const hours =
+                Math.floor(
+                    difference
+                    /
+                    (60 * 60 * 1000)
+                );
 
-        // ============================================================
-        // INIT
-        // ============================================================
-        renderCategories();
-        renderProducts(PRODUCTS);
-        renderTestimonials();
-        updateCartCount();
 
-        // Close mobile menu on resize to desktop
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                mobileMenu.style.display = 'none';
-                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            const minutes =
+                Math.floor(
+                    (
+                        difference
+                        %
+                        (60 * 60 * 1000)
+                    )
+                    /
+                    (60 * 1000)
+                );
+
+
+            const seconds =
+                Math.floor(
+                    (
+                        difference
+                        %
+                        (60 * 1000)
+                    )
+                    /
+                    1000
+                );
+
+
+            document
+                .getElementById('dealHours')
+                .textContent =
+                String(hours)
+                    .padStart(2, '0');
+
+
+            document
+                .getElementById('dealMinutes')
+                .textContent =
+                String(minutes)
+                    .padStart(2, '0');
+
+
+            document
+                .getElementById('dealSeconds')
+                .textContent =
+                String(seconds)
+                    .padStart(2, '0');
+
+        }
+
+
+        tick();
+
+        setInterval(
+            tick,
+            1000
+        );
+
+    })();
+
+
+    /* ============================================================
+       CART BUTTON
+    ============================================================ */
+
+    document
+        .getElementById('cartBtn')
+        .addEventListener(
+            'click',
+            () => {
+
+                alert(
+                    `Your parts enquiry contains ${cartCount} item${cartCount !== 1 ? 's' : ''}.`
+                );
+
             }
-        });
+        );
 
-        console.log('🚀 NexusShop — user‑friendly e‑commerce demo loaded.');
-    </script>
+
+    /* ============================================================
+       PHONE
+    ============================================================ */
+
+    function callBusiness() {
+
+        window.location.href =
+            'tel:+919876543210';
+
+    }
+
+
+    /* ============================================================
+       WHATSAPP
+    ============================================================ */
+
+    function whatsappBusiness() {
+
+        const message =
+            encodeURIComponent(
+                'Hello Kohinoor, I need information about lorry transport / spare parts.'
+            );
+
+
+        window.open(
+            'https://wa.me/919876543210?text=' + message,
+            '_blank'
+        );
+
+    }
+
+
+    /* ============================================================
+       RESIZE
+    ============================================================ */
+
+    window.addEventListener(
+        'resize',
+        () => {
+
+            if (
+                window.innerWidth > 1100
+            ) {
+
+                mobileMenu.style.display =
+                    'none';
+
+                mobileToggle.innerHTML =
+                    '<i class="fas fa-bars"></i>';
+
+            }
+
+        }
+    );
+
+
+    /* ============================================================
+       YEAR
+    ============================================================ */
+
+    document
+        .getElementById('year')
+        .textContent =
+        new Date().getFullYear();
+
+
+    /* ============================================================
+       INITIALIZE
+    ============================================================ */
+
+    renderCategories();
+
+    renderProducts(
+        PRODUCTS
+    );
+
+    renderReviews();
+
+    updateCart();
+
+
+    console.log(
+        '🚛 Kohinoor Lorry Transport & Parts loaded.'
+    );
+
+</script>
 
 </body>
 </html>
